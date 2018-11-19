@@ -68,11 +68,9 @@ Professional Certification Timelines
 
 ## Built With
 
-* [R](https://www.r-project.org/)
-    + Core packages(dplyr, tidyr, RJDBC, ...)
-* [Carto VL](https://carto.com/developers/carto-vl/)
-* [Mapbox GL](https://www.mapbox.com/mapbox-gl-js/api/)
 * [D3](https://d3js.org/)
+* [Leaflet](https://leafletjs.com/)
+* [Keen Dashboards](https://keen.github.io/dashboards/)
 * [Bootstrap](https://getbootstrap.com/)
 * Java 1.6 (Core, open proj4j by osgeo)
 
