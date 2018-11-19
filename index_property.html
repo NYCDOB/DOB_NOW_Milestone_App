@@ -880,34 +880,8 @@
 			Y : +d.EPSG2263_y					
 		};
 	}, function (data){	
-				<!-- NO OBJECTIONS: PLAN EXAM -->
-				//var selectJob = "B00000346-I1_Antenna";
-				
-				<!-- NO FAILURES: PRO-CERT -->
-				//var selectJob = "B00000119-P2_Plumbing";
-				
-				<!-- OBJECTIONS: PLAN EXAM: OBJECTION FILING STATUS -->
-				//var selectJob = "B00000573-I1_Curb_Cut";
-				
-				<!-- OBJECTIONS: PLAN EXAM: OBJECTION FILING STATUS: ZERO RESUBMISSIONS -->
-				//var selectJob = "Q00026606-I1_Antenna";
-				
-				<!-- FAILURES: PRO-CERT: QA FAILED FILING STATUS -->
-				//var selectJob = "B00013223-I1_Side_Walk_Shed";
-				
-				<!-- FAILURES: PRO-CERT: QA FAILED FILING STATUS: ZERO RESUBMISSIONS -->
-				var selectJob = "S00095258-I1_Curb_Cut";
-				
-				<!-- OBJECTIONS: PLAN EXAM: OTHER FILING STATUS -->
-				//var selectJob = "B00000043-I1_Sprinklers";
-				
-				<!-- FAILURES: PRO-CERT: OTHER FILING STATUS -->
-				//var selectJob = "B00000158-I1_Plumbing";
-				
-				<!-- NO GOOD CHECK FLAG -->
-				//var selectJob = "Q00000575-I1_Plumbing";
-				
-				//var selectJob = window.location.hash.substring(1)
+
+				var selectJob = window.location.hash.substring(1)
 				var dateFormat = d3.time.format("%m/%d/%Y");
 
 				var filteredData = data.filter(function(d){
