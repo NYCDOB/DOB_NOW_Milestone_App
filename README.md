@@ -2,13 +2,13 @@
 
 The New York City Department of Buildings (DOB) DOB NOW Build Milestones application displays basic details for selected DOB NOW Build filings on an interactive map of New York City. Each filing is represented as a point on the map, and clicking the point or the item on the list below brings you to a profile page that shows major milestone dates for that filing. The application is updated daily with the latest filings for Antenna, Curb Cut, Fence, Plumbing, Scaffold, Sidewalk Shed, Sign, Sprinkler, and Standpipe filings in DOB NOW.
 
-![Milestone Map Page](https://github.com/cnicklin/D3_DOBNOW_Milestone/blob/gh-pages/MapPage.PNG)
+![Milestone Map Page](https://github.com/cnicklin/DOB_NOW_Milestone_App/blob/gh-pages/MapPage.PNG)
 
 ## Data Source
 
 Data flows from the BI tool to GitHub public hold. This is a daily automated process. It creates results in 2 formats: JSON (for search) and CSV (for map imaging).
 
-<img align="center" width="" height="" src="https://github.com/cnicklin/D3_DOBNOW_Milestone/blob/gh-pages/Flow.PNG" alt="Milestone App Flow Diagram">
+<img align="center" width="" height="" src="https://github.com/cnicklin/DOB_NOW_Milestone_App/blob/gh-pages/Flow.PNG" alt="Milestone App Flow Diagram">
 
 ## Data Definitions
 Definitions for elements on the Profile Page are listed below, but can also be viewed by hovering over the field name on the webpage.
@@ -22,7 +22,7 @@ Definitions for elements on the Profile Page are listed below, but can also be v
 | Work Type | The type of work described in this filing. It could include plumbing, sprinkler, construction fence, or another type of work. |
 | Job Type | This indicates the extent of the work being done. NB means a new building is being built. A1 means that extensive alterations will be done resulting in a change of building occupancy. A2 means that alterations will be done but will not result in a change of building occupancy. A3 indicates that minor alterations will be done. |
 | Professional Certification | Yes indicates that the applicant is certifying that the work being performed complies with all applicable laws and codes. This job will then skip review by a plan examiner. |
-| Filing Status | The current status of the filing. A definition for each of the values for Filing Status can be found on our [Status Glossary](https://github.com/cnicklin/D3_DOBNOW_Milestone/blob/gh-pages/Statuses.md). |
+| Filing Status | The current status of the filing. A definition for each of the values for Filing Status can be found on our [Status Glossary](https://github.com/cnicklin/DOB_NOW_Milestone_App/blob/gh-pages/Statuses.md). |
 | Number of Resubmissions | During review, the Department of Buildings may return a filing to the applicant multiple times because the information is incomplete, because it needs correction, or another reason. This indicates the total number of times the filing was resubmitted, and does not include the initial submission. |
 | Job Description | The general description of the work being applied for. This field is free text, and is filled out by the applicant. |
 
