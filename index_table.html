@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+</head>
+<style>
+th{
+	background-color: #E8EBEF;
+}
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+</style>
+<body>
+
+		<div id="wrap">
+			<div class="container">
+            <h3>DOB NOW Job Filings</h3>
+				<table id="riskTable" class="display"></table>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.9/d3.min.js"></script>
+
+		
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+	
+	$(function(){
+	
+
+			$('#riskTable').DataTable({
+				"ajax": {
+					"url": "https://raw.githubusercontent.com/NYCDOB/DOB_NOW_Milestone_App/gh-pages/data/milestone.json",
+					"dataSrc": ""
+				},
+				columnDefs: [{
+					targets: 0,
+					render: function(data,type,row,meta){
+						return '<a href= "https://nycdob.github.io/DOB_NOW_Milestone_App/index_property#' + data +'" target="_blank">' + data + '</a>';
+					}
+				}],
+				order: [[0, "desc"]],
+				lengthChange: false,
+				pageLength: 5,
+				columns: [
+					{	data: "key_id",
+						title: "key_id"
+					},
+					{ 	data: "Job Number",
+						title: "Job Number"
+					},
+
+					{ 	data: "Bin", 
+						title: "BIN"
+					},
+
+					{ 	data: "House Number", 
+						title: "House Number"
+					},
+					{ 	data: "Street Name", 
+						title: "Street"
+					},
+					{ 	data: "Borough", 
+						title: "Borough"
+					},
+					{ 	data: "Community Board", 
+						title: "Community District"
+					},
+					{ 	data: "Work Type Name", 
+						title: "Work Type"
+					},
+					{ 	data: "Filing Status",
+						title: "Filing Status"
+					},
+
+					{ 	data: "Filing Date", 
+						title: "Filing Date"
+					},
+
+					{ 	data: "CPE Assigned Date", 
+						title: "CPE Assigned Date"
+					},
+					{ 	data: "CPE Action Date", 
+						title: "CPE Action Date"
+					},
+					{ 	data: "PE Assigned Date", 
+						title: "PE Assigned Date"
+					},
+					{ 	data: "First Objection Date",
+						title: "First Objection Date"
+					},
+
+					{ 	data: "Latest Objections Date", 
+						title: "Latest Objection Date"
+					},
+
+					{ 	data: "Latest Resubmit Date", 
+						title: "Latest Resubmit Date"
+					},
+					{ 	data: "Plan Approved Date", 
+						title: "Plan Approved Date"
+					},
+					{ 	data: "Latest Permit Issued Date", 
+						title: "Permit Issued Date"
+					},
+					{ 	data: "Latest Permit Signed Off Date",
+						title: "Permit Signed Off Date"
+					}
+
+				]
+			});
+	});	
+});
+</script>
+
+
+
+</body>
+</html>

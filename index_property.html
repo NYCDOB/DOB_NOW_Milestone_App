@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Filing</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="./dist/css/keen-dashboards.css" />
+  <link rel="stylesheet" type="text/css" href="./dist/css/style.css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+</head>
+<style>
+
+</style>
+<body class="application">
+
+	<div class="heading">
+		DOB NOW JOB FILING: <span id="summary9"></span>
+		<ul class="links">
+			<a class="overview" target="_parent" href="https://nycdob.github.io/DOB_NOW_Milestone_App/index_overview">Job Filings Overview Map</a>
+			<a href="https://github.com/NYCDOB/DOB_NOW_Milestone_App/blob/gh-pages/README.md" target="_blank" type="button" class="btn btn-default btn-sm">About</a>
+			<a href="https://github.com/NYCDOB/DOB_NOW_Milestone_App/tree/gh-pages" target="_blank" type="button" class="btn btn-default btn-sm">Github</a>
+		</ul>
+	</div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-stage">
+			<iframe id="propmap" width="100%" height="445px" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+
+          <div class="col-sm-6">
+            <div class="chart-wrapper">
+              <div class="chart-stage" id="chart-01">
+                <div id="summary1txt" ><span id="summary1"></span></div>
+				<div id="summary2txt" ><span id="summary2"></span></div>
+				<div id="summary12txt" >COMMUNITY DISTRICT <span id="summary12"></span></div>
+				<hr>
+				<div id="summary3txt" title="The unique ID assigned when the applicant submits the filing to the Department of Buildings.">JOB NUMBER: <span id="summary3"></span><span id="summary14" title="NO GOOD CHECK FLAG: Please see footnote for explanation."></span></div>
+				<div id="summary4txt" title="The Building Identification Number assigned by the Department of City Planning.">BIN NUMBER: <span id="summary4"></span></div>
+				<div id="summary5txt" title="The type of work described in this filing. It could include plumbing, sprinkler, construction fence, or another type of work. ">WORK TYPE: <span id="summary5"></span></div>
+				<div id="summary11txt" title="This indicates the extent of the work being done. NB means a new building is being built. A1 means that extensive alterations will be done resulting in a change of building occupancy. A2 means that alterations will be done but will not result in a change of building occupancy. A3 indicates that minor alterations will be done.">JOB TYPE: <span id="summary11"></span></div>
+				<div id="summary6txt" title="Yes indicates that the applicant is certifying that the work being performed complies with all applicable laws and codes. This job will then skip review by a plan examiner.">PROFESSIONAL CERTIFICATION: <span id="summary6"></span></div>
+				<div id="summary7txt" title="The current status of the filing. Click the link for more information.">FILING STATUS: <a href="https://nycdob.github.io/D3_DOBNOW_Milestone/data/FilingStatusGlossary.pdf" target="_blank"><span id="summary7"></span></a> <span id="summary10"></span></div>
+				<div id="summary13txt" title="During review, the Department of Buildings may return a filing to the applicant multiple times because the information is incomplete, because it needs correction, or another reason. This indicates the total number of times the filing was resubmitted, and does not include the initial submission.">NUMBER OF RESUBMISSIONS: <span id="summary13"></span></div>
+				<div id="summary8txt" title="The general description of the work being applied for. This field is free text, and is filled out by the applicant.">JOB DESCRIPTION: <span id="summary8"></span></div>
+				<div id="summary15txt"><span id="summary15"></span></div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+<div class="container-fluid">
+    <div class="row">
+		<div class="col-sm-6">
+			<div class="chart-wrapper">
+			  <div class="chart-stage">
+				<iframe id="cyclo" width="100%" height="445px" scrolling="no" style="overflow:hidden;" frameborder="0" ></iframe>
+			  </div>
+			  <div id="cyclo_txt" >Note: The above imagery may not reflect the work being done.</div>
+			</div>
+		</div>
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+		<div class="heading_milestones">MILESTONES</div>
+			<div class="chart-timeline" id="sPlan_noObj_Chart">
+				<ul class="timeline">
+				
+				<!-- Date 1 -->
+				<li class="li" id="date1">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the applicant submitted the filing to the Department of Buildings.">Initial Filing: <span class="date" id="filingDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 2 -->
+				<li class="li" id="date2">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a Chief Plan Examiner for review or for delegation to a Plan Examiner.">CPE Assigned: <span class="date" id="cpeAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 3 -->
+				<li class="li" id="date3">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the Chief Plan Examiner took action on the filing.">CPE Action: <span class="date" id="cpeActionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 4 -->
+				<li class="li" id="date4">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a Plan Examiner.">PE Assigned: <span class="date" id="peAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				<!-- Date 5 -->
+				<li class="li" id="date8">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was approved. The applicant can now pull permits.">Plan Approved: <span class="date" id="planApprovedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				<!-- Date 6 -->
+				<li class="li" id="date9">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The first date the permit was issued.">Initial Permit Issued: <span class="date" id="permitIssuedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				<!-- Date 7 -->
+				<li class="li" id="date11">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The latest date the permit expires.">Latest Permit Expiration: <span class="date" id="latestPermitExpDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				<!-- Date 8 -->
+				<li class="li" id="date12">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date the work is complete and the Department of Buildings has signed off on it.">Job Signed Off: <span class="date" id="jobSignOffDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="chart-timeline" id="pCert_noFail_Chart">
+				<ul class="timeline">
+				
+				<!-- Date 1 -->
+				<li class="li" id="date1">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the applicant submitted the filing to the Department of Buildings.">Initial Filing: <span class="date" id="filingDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 2 -->
+				<li class="li" id="date2_PC">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a QA Supervisor for review or for delegation to a QA Admin.">QA Supervisor Assigned: <span class="date" id="proCertQASuperAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 3 -->
+				<li class="li" id="date3_PC">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a QA Admin.">QA Admin Assigned: <span class="date" id="proCertQAClerkAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 4 -->
+				<li class="li" id="date8">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was approved. The applicant can now pull permits.">Plan Approved: <span class="date" id="planApprovedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 5 -->
+				<li class="li" id="date9">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The first date the permit was issued.">Initial Permit Issued: <span class="date" id="permitIssuedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				<!-- Date 6 -->
+				<li class="li" id="date11">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The latest date the permit expires.">Latest Permit Expiration: <span class="date" id="latestPermitExpDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				<!-- Date 7 -->
+				<li class="li" id="date12">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date the work is complete and the Department of Buildings has signed off on it.">Job Signed Off: <span class="date" id="jobSignOffDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			</ul>
+		</div>
+
+
+		
+          <div class="chart-timeline" id="sPlan_Obj_objStatus_Chart"> 
+			<ul class="timeline">
+			
+				<!-- Date 1 -->
+				<li class="li" id="date1">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the applicant submitted the filing to the Department of Buildings.">Initial Filing: <span class="date" id="filingDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 2 -->
+				<li class="li" id="date2">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a Chief Plan Examiner for review or for delegation to a Plan Examiner.">CPE Assigned: <span class="date" id="cpeAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 3 -->
+				<li class="li" id="date3">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the Chief Plan Examiner took action on the filing.">CPE Action: <span class="date" id="cpeActionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 4 -->
+				<li class="li" id="date4">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a Plan Examiner.">PE Assigned: <span class="date" id="peAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 5 -->
+				<li class="li" id="date5">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was first returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date.">First Objection: <span class="date" id="firstObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 6 -->
+				<li class="li" id="date7">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was resubmitted to the Department of Buildings for review. A filing may never be sent back to the applicant and therefore may skip this milestone date.">Latest Resubmission: <span class="date" id="latestResubmitDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 7 -->
+				<li class="li" id="date6">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date.">Latest Objection: <span class="date" id="latestObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 8 -->
+				<li class="li" id="date8">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was approved. The applicant can now pull permits.">Plan Approved: <span class="date" id="planApprovedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 9 -->
+				<li class="li" id="date9">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The first date the permit was issued.">Initial Permit Issued: <span class="date" id="permitIssuedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 10 -->
+				<li class="li" id="date11">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The latest date the permit expires.">Latest Permit Expiration: <span class="date" id="latestPermitExpDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 11 -->
+				<li class="li" id="date12">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date the work is complete and the Department of Buildings has signed off on it.">Job Signed Off: <span class="date" id="jobSignOffDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+			</ul>		
+          </div>
+		  
+          <div class="chart-timeline" id="sPlan_Obj_objStatus_noResub_Chart"> 
+			<ul class="timeline">
+			
+				<!-- Date 1 -->
+				<li class="li" id="date1">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the applicant submitted the filing to the Department of Buildings.">Initial Filing: <span class="date" id="filingDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 2 -->
+				<li class="li" id="date2">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a Chief Plan Examiner for review or for delegation to a Plan Examiner.">CPE Assigned: <span class="date" id="cpeAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 3 -->
+				<li class="li" id="date3">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the Chief Plan Examiner took action on the filing.">CPE Action: <span class="date" id="cpeActionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 4 -->
+				<li class="li" id="date4">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a Plan Examiner.">PE Assigned: <span class="date" id="peAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 5 -->
+				<li class="li" id="date5">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was first returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date.">First Objection: <span class="date" id="firstObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 6 -->
+				<li class="li" id="date6">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date.">Latest Objection: <span class="date" id="latestObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 7 -->
+				<li class="li" id="date7">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was resubmitted to the Department of Buildings for review. A filing may never be sent back to the applicant and therefore may skip this milestone date.">Latest Resubmission: <span class="date" id="latestResubmitDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 8 -->
+				<li class="li" id="date8">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was approved. The applicant can now pull permits.">Plan Approved: <span class="date" id="planApprovedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 9 -->
+				<li class="li" id="date9">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The first date the permit was issued.">Initial Permit Issued: <span class="date" id="permitIssuedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 10 -->
+				<li class="li" id="date11">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The latest date the permit expires.">Latest Permit Expiration: <span class="date" id="latestPermitExpDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 11 -->
+				<li class="li" id="date12">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date the work is complete and the Department of Buildings has signed off on it.">Job Signed Off: <span class="date" id="jobSignOffDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+			</ul>		
+          </div>
+		  
+		<div class="chart-timeline" id="pCert_Fail_failStatus_Chart">
+			<ul class="timeline">
+
+				<!-- Date 1 -->
+				<li class="li" id="date1">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the applicant submitted the filing to the Department of Buildings.">Initial Filing: <span class="date" id="filingDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 2 -->
+				<li class="li" id="date2_PC">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a QA Supervisor for review or for delegation to a QA Admin.">QA Supervisor Assigned: <span class="date" id="proCertQASuperAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 3 -->
+				<li class="li" id="date3_PC">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a QA Admin.">QA Admin Assigned: <span class="date" id="proCertQAClerkAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 4 -->
+				<li class="li" id="date5">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The first date that the filing was returned to the applicant because it was incomplete or needed correction. A filing can fail QA multiple times, or it may be approved on the first review and skip this milestone date.">Initial QA Failed: <span class="date" id="firstObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 5 -->
+				<li class="li" id="date7">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was resubmitted to the Department of Buildings for review. A filing may never be sent back to the applicant and therefore may skip this milestone date.">Latest Resubmission: <span class="date" id="latestResubmitDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 6 -->
+				<li class="li" id="date6">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date.">Latest QA Failed: <span class="date" id="latestObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 7 -->
+				<li class="li" id="date8">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was approved. The applicant can now pull permits.">Plan Approved: <span class="date" id="planApprovedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 8 -->
+				<li class="li" id="date9">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that a permit was issued. Multiple permits can be issued for a job filing, and this only shows the most recent.">Initial Permit Issued: <span class="date" id="permitIssuedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+
+				<!-- Date 9 -->
+				<li class="li" id="date11">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The latest date the permit expires.">Latest Permit Expiration: <span class="date" id="latestPermitExpDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 10 -->
+				<li class="li" id="date12">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date the work is complete and the Department of Buildings has signed off on it.">Job Signed Off: <span class="date" id="jobSignOffDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  	</ul>		
+          </div>
+		  
+		<div class="chart-timeline" id="pCert_Fail_failStatus_noResub_Chart">
+			<ul class="timeline">
+
+				<!-- Date 1 -->
+				<li class="li" id="date1">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the applicant submitted the filing to the Department of Buildings.">Initial Filing: <span class="date" id="filingDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 2 -->
+				<li class="li" id="date2_PC">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a QA Supervisor for review or for delegation to a QA Admin.">QA Supervisor Assigned: <span class="date" id="proCertQASuperAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 3 -->
+				<li class="li" id="date3_PC">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a QA Admin.">QA Admin Assigned: <span class="date" id="proCertQAClerkAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 4 -->
+				<li class="li" id="date5">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The first date that the filing was returned to the applicant because it was incomplete or needed correction. A filing can fail QA multiple times, or it may be approved on the first review and skip this milestone date.">Initial QA Failed: <span class="date" id="firstObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+								
+				<!-- Date 5 -->
+				<li class="li" id="date6">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date.">Latest QA Failed: <span class="date" id="latestObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 6 -->
+				<li class="li" id="date7">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was resubmitted to the Department of Buildings for review. A filing may never be sent back to the applicant and therefore may skip this milestone date.">Latest Resubmission: <span class="date" id="latestResubmitDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 7 -->
+				<li class="li" id="date8">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was approved. The applicant can now pull permits.">Plan Approved: <span class="date" id="planApprovedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 8 -->
+				<li class="li" id="date9">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that a permit was issued. Multiple permits can be issued for a job filing, and this only shows the most recent.">Initial Permit Issued: <span class="date" id="permitIssuedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+
+				<!-- Date 9 -->
+				<li class="li" id="date11">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The latest date the permit expires.">Latest Permit Expiration: <span class="date" id="latestPermitExpDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 10 -->
+				<li class="li" id="date12">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date the work is complete and the Department of Buildings has signed off on it.">Job Signed Off: <span class="date" id="jobSignOffDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  	</ul>		
+          </div>
+
+          <div class="chart-timeline" id="sPlan_Obj_othStatus_Chart"> 
+			<ul class="timeline">
+			
+				<!-- Date 1 -->
+				<li class="li" id="date1">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the applicant submitted the filing to the Department of Buildings.">Initial Filing: <span class="date" id="filingDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 2 -->
+				<li class="li" id="date2">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a Chief Plan Examiner for review or for delegation to a Plan Examiner.">CPE Assigned: <span class="date" id="cpeAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 3 -->
+				<li class="li" id="date3">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the Chief Plan Examiner took action on the filing.">CPE Action: <span class="date" id="cpeActionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 4 -->
+				<li class="li" id="date4">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a Plan Examiner.">PE Assigned: <span class="date" id="peAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 5 -->
+				<li class="li" id="date5">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was first returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date.">First Objection: <span class="date" id="firstObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 6 -->
+				<li class="li" id="date6">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date.">Latest Objection: <span class="date" id="latestObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 7 -->
+				<li class="li" id="date7">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was resubmitted to the Department of Buildings for review. A filing may never be sent back to the applicant and therefore may skip this milestone date.">Latest Resubmission: <span class="date" id="latestResubmitDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 8 -->
+				<li class="li" id="date8">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was approved. The applicant can now pull permits.">Plan Approved: <span class="date" id="planApprovedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 9 -->
+				<li class="li" id="date9">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The first date the permit was issued.">Initial Permit Issued: <span class="date" id="permitIssuedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 10 -->
+				<li class="li" id="date11">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The latest date the permit expires.">Latest Permit Expiration: <span class="date" id="latestPermitExpDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 11 -->
+				<li class="li" id="date12">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date the work is complete and the Department of Buildings has signed off on it.">Job Signed Off: <span class="date" id="jobSignOffDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+			</ul>		
+          </div>
+
+		<div class="chart-timeline" id="pCert_Fail_othStatus_Chart">
+			<ul class="timeline">
+
+				<!-- Date 1 -->
+				<li class="li" id="date1">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the applicant submitted the filing to the Department of Buildings.">Initial Filing: <span class="date" id="filingDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 2 -->
+				<li class="li" id="date2_PC">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a QA Supervisor for review or for delegation to a QA Admin.">QA Supervisor Assigned: <span class="date" id="proCertQASuperAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 3 -->
+				<li class="li" id="date3_PC">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was assigned to a QA Admin.">QA Admin Assigned: <span class="date" id="proCertQAClerkAssignedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 4 -->
+				<li class="li" id="date5">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The first date that the filing was returned to the applicant because it was incomplete or needed correction. A filing can fail QA multiple times, or it may be approved on the first review and skip this milestone date.">Initial QA Failed: <span class="date" id="firstObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 5 -->
+				<li class="li" id="date6">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date.">Latest QA Failed: <span class="date" id="latestObjectionDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 6 -->
+				<li class="li" id="date7">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that the filing was resubmitted to the Department of Buildings for review. A filing may never be sent back to the applicant and therefore may skip this milestone date.">Latest Resubmission: <span class="date" id="latestResubmitDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+								
+				<!-- Date 7 -->
+				<li class="li" id="date8">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date that the filing was approved. The applicant can now pull permits.">Plan Approved: <span class="date" id="planApprovedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  
+				<!-- Date 8 -->
+				<li class="li" id="date9">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The most recent date that a permit was issued. Multiple permits can be issued for a job filing, and this only shows the most recent.">Initial Permit Issued: <span class="date" id="permitIssuedDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+
+				<!-- Date 9 -->
+				<li class="li" id="date11">
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag" title="The latest date the permit expires.">Latest Permit Expiration: <span class="date" id="latestPermitExpDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+				
+				<!-- Date 10 -->
+				<li class="li" id="date12">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag" title="The date the work is complete and the Department of Buildings has signed off on it.">Job Signed Off: <span class="date" id="jobSignOffDateTL"></span></span>
+						</div>			
+					</div>
+				</li>
+			  	</ul>		
+          </div>		  
+		  
+        </div>
+      </div>
+    </div>
+</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./dist/js/keen.min.js"></script>
+  <script type="text/javascript" src="./dist/js/meta.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.9/d3.min.js"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="https://d3js.org/d3-time.v1.min.js"></script>
+  <script src="https://d3js.org/d3-time-format.v2.min.js"></script>
+  
+
+<script>
+	
+	var cycloProperty;
+	var mapProperty;
+	
+
+	function cycloCoordinates(x, y){
+		cycloProperty = "https://nycdob.github.io/CycloMedia/simple#" + x + "," + y;
+		document.getElementById("cyclo").setAttribute("src", cycloProperty);
+	}
+	
+	function mapCoordinates(longitude, latitude){
+		mapProperty = "https://nycdob.github.io/Maps/leafletMap.html?coords=" + latitude + "," + longitude + "&zoom=18";
+		document.getElementById("propmap").setAttribute("src", mapProperty);
+	}
+
+	d3.csv("https://raw.githubusercontent.com/NYCDOB/DOB_NOW_Milestone_App/gh-pages/data/milestone.csv", function(d){
+		return {
+			id : d.key_id,
+			jobnumber : d["Job Number"],
+			bin : +d.Bin,
+			HouseNum : d["House Number"],
+			Street : d["Street Name"],
+			CD : d["Community Board"],
+			borough : d.Borough,
+			longitude : +d.Longitude,
+			latitude : +d.Latitude,
+			profCert : d.ProfessionalCertificate,
+			filingStatus : d["Filing Status"],
+			jobSignOffDate : d["Job Sign off Date"],
+			workType : d["Work Type Name"],
+			filingDate : d["Filing Date"],	
+			cpeAssignedDate : d["CPE Assigned Date"],
+			cpeActionDate : d["CPE Action Date"],
+			peAssignedDate: d["PE Assigned Date"],
+			numObjectionsFails : +d["Number of Objections/Fails"],	
+			numResubmissions : +d[" Number of Resubmission"],
+			firstObjectionDate : d["First Objection/QA Fail Date"],
+			latestObjectionDate : d["Latest Objections/QA Fail Date"],
+			latestResubmitDate: d["Latest Resubmit Date"],
+			planApprovedDate : d["Plan Approved Date"],
+			permitIssuedDate : d["Initial Permit Issued Date"],
+			permitSignedOffDate : d["Latest Permit Signed Off Date"],
+			proCertQASuperAssignedDate : d["Procert QA Supervisior Assigned Date"],
+			proCertQAClerkAssignedDate : d["Procert QA Admin Assigned Date"],
+			qaFailedDate : d["QA Failed Date"],
+			jobType : d["Job Type"],
+			jobDesc : d["Job Description"],
+			noGoodCheck : d.NoGoodCheckFlag,
+			noGoodCheckDate : d.NoGoodCheckDate,
+			latestPermitExpDate : d["Latest Permit Expiration Date"],
+			X : +d.EPSG2263_x,
+			Y : +d.EPSG2263_y					
+		};
+	}, function (data){	
+
+				var selectJob = window.location.hash.substring(1)
+				var dateFormat = d3.time.format("%m/%d/%Y");
+
+				var filteredData = data.filter(function(d){
+					return d.id == selectJob;				
+				});
+				var address_txt = filteredData[0].HouseNum + ' ' + filteredData[0].Street;
+				    bin_txt = filteredData[0].bin;
+					boro_txt = filteredData[0].borough;
+					long_txt = filteredData[0].longitude;
+					lat_txt = filteredData[0].latitude;
+					x_txt = filteredData[0].X;
+					y_txt = filteredData[0].Y;
+					worktype_txt = filteredData[0].workType;
+					jobType_txt = filteredData[0].jobType;
+					profcert_txt = filteredData[0].profCert;
+					filingStatus_txt = filteredData[0].filingStatus;
+					jobDesc_txt = filteredData[0].jobDesc;
+					cd_txt = filteredData[0].CD;
+					noGoodCheck_txt = filteredData[0].noGoodCheck;
+					numResubmissions_txt = filteredData[0].numResubmissions;
+					numObjectionsFails_txt = filteredData[0].numObjectionsFails;
+				
+					
+					jobSignOffDate_txt = filteredData[0].jobSignOffDate;
+					jobSignOffDateFormat = new Date(jobSignOffDate_txt);
+					
+					filingDate_txt = filteredData[0].filingDate;
+					filingDateFormat = new Date(filingDate_txt);
+					
+					cpeAssignedDate_txt = filteredData[0].cpeAssignedDate;
+					cpeAssignedDateFormat = new Date(cpeAssignedDate_txt);
+					
+					cpeActionDate_txt = filteredData[0].cpeActionDate;
+					cpeActionDateFormat = new Date(cpeActionDate_txt);
+					
+					peAssignedDate_txt = filteredData[0].peAssignedDate;
+					peAssignedDateFormat = new Date(peAssignedDate_txt);
+					
+					firstObjectionDate_txt = filteredData[0].firstObjectionDate;
+					firstObjectionDateFormat = new Date(firstObjectionDate_txt);
+					
+					latestObjectionDate_txt = filteredData[0].latestObjectionDate;
+					latestObjectionDateFormat = new Date(latestObjectionDate_txt);
+					
+					latestResubmitDate_txt = filteredData[0].latestResubmitDate;
+					latestResubmitDateFormat = new Date(latestResubmitDate_txt);
+					
+					planApprovedDate_txt = filteredData[0].planApprovedDate;
+					planApprovedDateFormat = new Date(planApprovedDate_txt);
+					
+					permitIssuedDate_txt = filteredData[0].permitIssuedDate;
+					permitIssuedDateFormat = new Date(permitIssuedDate_txt);
+					
+					permitSignedOffDate_txt = filteredData[0].permitSignedOffDate;
+					permitSignedOffDateFormat = new Date(permitSignedOffDate_txt);	
+
+					proCertQASuperAssignedDate_txt = filteredData[0].proCertQASuperAssignedDate;
+					proCertQASuperAssignedDateFormat = new Date(proCertQASuperAssignedDate_txt);	
+
+					proCertQAClerkAssignedDate_txt = filteredData[0].proCertQAClerkAssignedDate;
+					proCertQAClerkAssignedDateFormat = new Date(proCertQAClerkAssignedDate_txt);	
+
+					qaFailedDate_txt = filteredData[0].qaFailedDate;
+					qaFailedDateFormat = new Date(qaFailedDate_txt);	
+
+					noGoodCheckDate_txt = filteredData[0].noGoodCheckDate;
+					noGoodCheckDateFormat = new Date(noGoodCheckDate_txt);	
+
+					latestPermitExpDate_txt = filteredData[0].latestPermitExpDate;
+					latestPermitExpDateFormat = new Date(latestPermitExpDate_txt);					
+				
+				d3.select("#summary1").html(address_txt);
+				d3.select("#summary2").html(boro_txt);
+				d3.select("#summary3").html(selectJob);
+				d3.select("#summary4").html(bin_txt);
+				d3.select("#summary5").html(worktype_txt);
+				d3.select("#summary11").html(jobType_txt);
+				d3.select("#summary6").html(profcert_txt);
+				d3.select("#summary7").html(filingStatus_txt);
+				d3.select("#summary8").html(jobDesc_txt);
+				d3.select("#summary9").html(worktype_txt);
+				d3.select("#summary12").html(cd_txt);
+				d3.select("#summary13").html(numResubmissions_txt);
+				
+				
+				cycloCoordinates(x_txt,y_txt);
+				mapCoordinates(long_txt,lat_txt);
+				timelineOption();
+			
+			function timelineOption(){
+				if (profcert_txt == "No" && numObjectionsFails_txt == 0){
+					sPlan_noObj();
+				} else if (profcert_txt == "Yes" && numObjectionsFails_txt == 0){
+					pCert_noFail();
+				} else if (profcert_txt == "No" && numObjectionsFails_txt != 0 && filingStatus_txt == "Objections" && numResubmissions_txt != 0){
+					sPlan_Obj_objStatus();
+				} else if (profcert_txt == "No" && numObjectionsFails_txt != 0 && filingStatus_txt == "Objections" && numResubmissions_txt == 0){
+					sPlan_Obj_objStatus_noResub();
+				} else if (profcert_txt == "Yes" && numObjectionsFails_txt != 0 && filingStatus_txt == "QA Failed" && numResubmissions_txt != 0){
+					pCert_Fail_failStatus();
+				} else if (profcert_txt == "Yes" && numObjectionsFails_txt != 0 && filingStatus_txt == "QA Failed" && numResubmissions_txt == 0){
+					pCert_Fail_failStatus_noResub();
+				} else if (profcert_txt == "No" && numObjectionsFails_txt != 0 && filingStatus_txt != "Objections"){
+					sPlan_Obj_othStatus();
+				} else if (profcert_txt == "Yes" && numObjectionsFails_txt != 0 && filingStatus_txt != "QA Failed"){
+					pCert_Fail_othStatus();
+				} else {
+					return null;
+				}
+			}
+			
+			function sPlan_noObj(){
+				var pending = "pending";
+				var elem_pCert_noFail_Chart = document.getElementById("pCert_noFail_Chart");
+				elem_pCert_noFail_Chart.remove();
+				var elem_sPlan_Obj_objStatus_Chart = document.getElementById("sPlan_Obj_objStatus_Chart");
+				elem_sPlan_Obj_objStatus_Chart.remove();
+				var elem_pCert_Fail_failStatus_Chart = document.getElementById("pCert_Fail_failStatus_Chart");
+				elem_pCert_Fail_failStatus_Chart.remove();
+				var elem_sPlan_Obj_othStatus_Chart = document.getElementById("sPlan_Obj_othStatus_Chart");
+				elem_sPlan_Obj_othStatus_Chart.remove();
+				var elem_pCert_Fail_othStatus_Chart = document.getElementById("pCert_Fail_othStatus_Chart");
+				elem_pCert_Fail_othStatus_Chart.remove();
+				var elem_sPlan_Obj_objStatus_noResub_Chart = document.getElementById("sPlan_Obj_objStatus_noResub_Chart");
+				elem_sPlan_Obj_objStatus_noResub_Chart.remove();
+				var elem_pCert_Fail_failStatus_noResub_Chart = document.getElementById("pCert_Fail_failStatus_noResub_Chart");
+				elem_pCert_Fail_failStatus_noResub_Chart.remove();
+								
+				$('#sPlan_noObj_Chart').html();
+				
+				if (!!filingDate_txt){ 
+						d3.select("#filingDateTL").html(dateFormat(filingDateFormat));
+						d3.select("#date1").attr("class", "li complete");
+						
+				} else {
+					d3.select("#filingDateTL").html(pending.italics());
+					d3.select("#date1").attr("class", "li");
+				}
+				
+				if (!!cpeAssignedDate_txt){
+						d3.select("#cpeAssignedDateTL").html(dateFormat(cpeAssignedDateFormat));
+						d3.select("#date2").attr("class", "li complete");
+					} else {
+						d3.select("#cpeAssignedDateTL").html(pending.italics());
+						d3.select("#date2").attr("class", "li");
+					}	
+				
+				if (!!cpeActionDate_txt){
+						d3.select("#cpeActionDateTL").html(dateFormat(cpeActionDateFormat));
+						d3.select("#date3").attr("class", "li complete");
+					} else {
+						d3.select("#cpeActionDateTL").html(pending.italics());
+						d3.select("#date3").attr("class", "li");
+					}					
+
+				if (!!peAssignedDate_txt){
+						d3.select("#peAssignedDateTL").html(dateFormat(peAssignedDateFormat));
+						d3.select("#date4").attr("class", "li complete");
+					} else {
+						d3.select("#peAssignedDateTL").html(pending.italics());
+						d3.select("#date4").attr("class", "li");
+					}
+					
+				if (!!planApprovedDate_txt){
+						d3.select("#planApprovedDateTL").html(dateFormat(planApprovedDateFormat));
+						d3.select("#date8").attr("class", "li complete");
+					} else {
+						d3.select("#planApprovedDateTL").html(pending.italics());
+						d3.select("#date8").attr("class", "li");
+					}
+					
+				if (!!permitIssuedDate_txt){
+						d3.select("#permitIssuedDateTL").html(dateFormat(permitIssuedDateFormat));
+						d3.select("#date9").attr("class", "li complete");
+					} else {
+						d3.select("#permitIssuedDateTL").html(pending.italics());
+						d3.select("#date9").attr("class", "li");
+					}
+					
+				if (!!latestPermitExpDate_txt){
+						d3.select("#latestPermitExpDateTL").html(dateFormat(latestPermitExpDateFormat));
+						d3.select("#date11").attr("class", "li complete");
+					} else {
+						d3.select("#latestPermitExpDateTL").html(pending.italics());
+						d3.select("#date11").attr("class", "li");
+					}
+					
+				if (noGoodCheck_txt=="Yes"){
+						d3.select("#summary14").html("  (NO GOOD CHECK)*");
+						d3.select("#summary15").html("*During the review and approval process of this filing, a payment was returned by the bank as 'No Good'. This may have caused delays in the Milestones timeline below.");
+					} else {
+						d3.select("#summary14").html("");
+						d3.select("#summary15").html("");
+					}
+					
+				if (!!jobSignOffDate_txt){
+						d3.select("#jobSignOffDateTL").html(dateFormat(jobSignOffDateFormat));
+						d3.select("#date12").attr("class", "li complete");
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#jobSignOffDateTL").html(pending.italics());
+						d3.select("#date12").attr("class", "li");
+						d3.select("#summary10").html("");
+					}
+			
+			}
+			
+			function pCert_noFail(){
+				var pending = "pending";
+				var elem_sPlan_noObj_Chart = document.getElementById("sPlan_noObj_Chart");
+				elem_sPlan_noObj_Chart.remove();
+				var elem_sPlan_Obj_objStatus_Chart = document.getElementById("sPlan_Obj_objStatus_Chart");
+				elem_sPlan_Obj_objStatus_Chart.remove();
+				var elem_pCert_Fail_failStatus_Chart = document.getElementById("pCert_Fail_failStatus_Chart");
+				elem_pCert_Fail_failStatus_Chart.remove();
+				var elem_sPlan_Obj_othStatus_Chart = document.getElementById("sPlan_Obj_othStatus_Chart");
+				elem_sPlan_Obj_othStatus_Chart.remove();
+				var elem_pCert_Fail_othStatus_Chart = document.getElementById("pCert_Fail_othStatus_Chart");
+				elem_pCert_Fail_othStatus_Chart.remove();
+				var elem_sPlan_Obj_objStatus_noResub_Chart = document.getElementById("sPlan_Obj_objStatus_noResub_Chart");
+				elem_sPlan_Obj_objStatus_noResub_Chart.remove();
+				var elem_pCert_Fail_failStatus_noResub_Chart = document.getElementById("pCert_Fail_failStatus_noResub_Chart");
+				elem_pCert_Fail_failStatus_noResub_Chart.remove();
+
+				$('#pCert_noFail_Chart').html();
+				
+				if (!!filingDate_txt){ 
+						d3.select("#filingDateTL").html(dateFormat(filingDateFormat));
+						d3.select("#date1").attr("class", "li complete");
+						
+				} else {
+					d3.select("#filingDateTL").html(pending.italics());
+					d3.select("#date1").attr("class", "li");
+				}				
+				
+				if (!!proCertQASuperAssignedDate_txt){
+						d3.select("#proCertQASuperAssignedDateTL").html(dateFormat(proCertQASuperAssignedDateFormat));
+						d3.select("#date2_PC").attr("class", "li complete");
+					} else {
+						d3.select("#proCertQASuperAssignedDateTL").html(pendingProCert.italics());
+						d3.select("#date2_PC").attr("class", "li");
+					}
+					
+				if (!!proCertQAClerkAssignedDate_txt){
+						d3.select("#proCertQAClerkAssignedDateTL").html(dateFormat(proCertQAClerkAssignedDateFormat));
+						d3.select("#date3_PC").attr("class", "li complete");
+					} else {
+						d3.select("#proCertQAClerkAssignedDateTL").html(pendingProCert.italics());
+						d3.select("#date3_PC").attr("class", "li");
+					}
+					
+				if (!!planApprovedDate_txt){
+						d3.select("#planApprovedDateTL").html(dateFormat(planApprovedDateFormat));
+						d3.select("#date8").attr("class", "li complete");
+					} else {
+						d3.select("#planApprovedDateTL").html(pending.italics());
+						d3.select("#date8").attr("class", "li");
+					}
+					
+				if (!!permitIssuedDate_txt){
+						d3.select("#permitIssuedDateTL").html(dateFormat(permitIssuedDateFormat));
+						d3.select("#date9").attr("class", "li complete");
+					} else {
+						d3.select("#permitIssuedDateTL").html(pending.italics());
+						d3.select("#date9").attr("class", "li");
+					}
+					
+				if (!!latestPermitExpDate_txt){
+						d3.select("#latestPermitExpDateTL").html(dateFormat(latestPermitExpDateFormat));
+						d3.select("#date11").attr("class", "li complete");
+					} else {
+						d3.select("#latestPermitExpDateTL").html(pending.italics());
+						d3.select("#date11").attr("class", "li");
+					}
+
+				if (noGoodCheck_txt=="Yes"){
+						d3.select("#summary14").html("  (NO GOOD CHECK)*");
+						d3.select("#summary15").html("*During the review and approval process of this filing, a payment was returned by the bank as 'No Good'. This may have caused delays in the Milestones timeline below.");
+					} else {
+						d3.select("#summary14").html("");
+						d3.select("#summary15").html("");
+					}	
+
+				if (!!jobSignOffDate_txt){
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#summary10").html("");
+					}	
+
+				if (!!jobSignOffDate_txt){
+						d3.select("#jobSignOffDateTL").html(dateFormat(jobSignOffDateFormat));
+						d3.select("#date12").attr("class", "li complete");
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#jobSignOffDateTL").html(pending.italics());
+						d3.select("#date12").attr("class", "li");
+						d3.select("#summary10").html("");
+					}					
+			}
+			
+			function sPlan_Obj_objStatus(){
+				var pending = "pending";
+				var elem_sPlan_noObj_Chart = document.getElementById("sPlan_noObj_Chart");
+				elem_sPlan_noObj_Chart.remove();
+				var elem_pCert_noFail_Chart = document.getElementById("pCert_noFail_Chart");
+				elem_pCert_noFail_Chart.remove();
+				var elem_pCert_Fail_failStatus_Chart = document.getElementById("pCert_Fail_failStatus_Chart");
+				elem_pCert_Fail_failStatus_Chart.remove();
+				var elem_sPlan_Obj_othStatus_Chart = document.getElementById("sPlan_Obj_othStatus_Chart");
+				elem_sPlan_Obj_othStatus_Chart.remove();
+				var elem_pCert_Fail_othStatus_Chart = document.getElementById("pCert_Fail_othStatus_Chart");
+				elem_pCert_Fail_othStatus_Chart.remove();
+				var elem_sPlan_Obj_objStatus_noResub_Chart = document.getElementById("sPlan_Obj_objStatus_noResub_Chart");
+				elem_sPlan_Obj_objStatus_noResub_Chart.remove();
+				var elem_pCert_Fail_failStatus_noResub_Chart = document.getElementById("pCert_Fail_failStatus_noResub_Chart");
+				elem_pCert_Fail_failStatus_noResub_Chart.remove();
+
+				$('#sPlan_Obj_objStatus_Chart').html();
+				
+				if (!!filingDate_txt){ 
+						d3.select("#filingDateTL").html(dateFormat(filingDateFormat));
+						d3.select("#date1").attr("class", "li complete");
+						
+				} else {
+					d3.select("#filingDateTL").html(pending.italics());
+					d3.select("#date1").attr("class", "li");
+				}
+				
+				if (!!cpeAssignedDate_txt){
+						d3.select("#cpeAssignedDateTL").html(dateFormat(cpeAssignedDateFormat));
+						d3.select("#date2").attr("class", "li complete");
+					} else {
+						d3.select("#cpeAssignedDateTL").html(pending.italics());
+						d3.select("#date2").attr("class", "li");
+					}	
+				
+				if (!!cpeActionDate_txt){
+						d3.select("#cpeActionDateTL").html(dateFormat(cpeActionDateFormat));
+						d3.select("#date3").attr("class", "li complete");
+					} else {
+						d3.select("#cpeActionDateTL").html(pending.italics());
+						d3.select("#date3").attr("class", "li");
+					}					
+
+				if (!!peAssignedDate_txt){
+						d3.select("#peAssignedDateTL").html(dateFormat(peAssignedDateFormat));
+						d3.select("#date4").attr("class", "li complete");
+					} else {
+						d3.select("#peAssignedDateTL").html(pending.italics());
+						d3.select("#date4").attr("class", "li");
+					}
+					
+				if (!!firstObjectionDate_txt){
+						d3.select("#firstObjectionDateTL").html(dateFormat(firstObjectionDateFormat));
+						d3.select("#date5").attr("class", "li complete");
+					} else {
+						d3.select("#firstObjectionDateTL").html(pending.italics());
+						d3.select("#date5").attr("class", "li");
+					}
+					
+				if (!!latestResubmitDate_txt){
+						d3.select("#latestResubmitDateTL").html(dateFormat(latestResubmitDateFormat));
+						d3.select("#date7").attr("class", "li complete");
+					} else {
+						d3.select("#latestResubmitDateTL").html(pending.italics());
+						d3.select("#date7").attr("class", "li");
+					}
+					
+				if (!!latestObjectionDate_txt){
+						d3.select("#latestObjectionDateTL").html(dateFormat(latestObjectionDateFormat));
+						d3.select("#date6").attr("class", "li complete");
+					} else {
+						d3.select("#latestObjectionDateTL").html(pending.italics());
+						d3.select("#date6").attr("class", "li");
+					}
+					
+				if (!!planApprovedDate_txt){
+						d3.select("#planApprovedDateTL").html(dateFormat(planApprovedDateFormat));
+						d3.select("#date8").attr("class", "li complete");
+					} else {
+						d3.select("#planApprovedDateTL").html(pending.italics());
+						d3.select("#date8").attr("class", "li");
+					}
+					
+				if (!!permitIssuedDate_txt){
+						d3.select("#permitIssuedDateTL").html(dateFormat(permitIssuedDateFormat));
+						d3.select("#date9").attr("class", "li complete");
+					} else {
+						d3.select("#permitIssuedDateTL").html(pending.italics());
+						d3.select("#date9").attr("class", "li");
+					}
+					
+				if (!!latestPermitExpDate_txt){
+						d3.select("#latestPermitExpDateTL").html(dateFormat(latestPermitExpDateFormat));
+						d3.select("#date11").attr("class", "li complete");
+					} else {
+						d3.select("#latestPermitExpDateTL").html(pending.italics());
+						d3.select("#date11").attr("class", "li");
+					}	
+
+				if (noGoodCheck_txt=="Yes"){
+						d3.select("#summary14").html("  (NO GOOD CHECK)*");
+						d3.select("#summary15").html("*During the review and approval process of this filing, a payment was returned by the bank as 'No Good'. This may have caused delays in the Milestones timeline below.");
+					} else {
+						d3.select("#summary14").html("");
+						d3.select("#summary15").html("");
+					}			
+
+				if (!!jobSignOffDate_txt){
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#summary10").html("");
+					}				
+
+				if (!!jobSignOffDate_txt){
+						d3.select("#jobSignOffDateTL").html(dateFormat(jobSignOffDateFormat));
+						d3.select("#date12").attr("class", "li complete");
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#jobSignOffDateTL").html(pending.italics());
+						d3.select("#date12").attr("class", "li");
+						d3.select("#summary10").html("");
+					}					
+			}
+			
+			function sPlan_Obj_objStatus_noResub(){
+				var pending = "pending";
+				var elem_sPlan_noObj_Chart = document.getElementById("sPlan_noObj_Chart");
+				elem_sPlan_noObj_Chart.remove();
+				var elem_pCert_noFail_Chart = document.getElementById("pCert_noFail_Chart");
+				elem_pCert_noFail_Chart.remove();
+				var elem_pCert_Fail_failStatus_Chart = document.getElementById("pCert_Fail_failStatus_Chart");
+				elem_pCert_Fail_failStatus_Chart.remove();
+				var elem_sPlan_Obj_othStatus_Chart = document.getElementById("sPlan_Obj_othStatus_Chart");
+				elem_sPlan_Obj_othStatus_Chart.remove();
+				var elem_pCert_Fail_othStatus_Chart = document.getElementById("pCert_Fail_othStatus_Chart");
+				elem_pCert_Fail_othStatus_Chart.remove();
+				var elem_sPlan_Obj_objStatus_Chart = document.getElementById("sPlan_Obj_objStatus_Chart");
+				elem_sPlan_Obj_objStatus_Chart.remove();
+				var elem_pCert_Fail_failStatus_noResub_Chart = document.getElementById("pCert_Fail_failStatus_noResub_Chart");
+				elem_pCert_Fail_failStatus_noResub_Chart.remove();
+
+				$('#sPlan_Obj_objStatus_noResub_Chart').html();
+				
+				if (!!filingDate_txt){ 
+						d3.select("#filingDateTL").html(dateFormat(filingDateFormat));
+						d3.select("#date1").attr("class", "li complete");
+						
+				} else {
+					d3.select("#filingDateTL").html(pending.italics());
+					d3.select("#date1").attr("class", "li");
+				}
+				
+				if (!!cpeAssignedDate_txt){
+						d3.select("#cpeAssignedDateTL").html(dateFormat(cpeAssignedDateFormat));
+						d3.select("#date2").attr("class", "li complete");
+					} else {
+						d3.select("#cpeAssignedDateTL").html(pending.italics());
+						d3.select("#date2").attr("class", "li");
+					}	
+				
+				if (!!cpeActionDate_txt){
+						d3.select("#cpeActionDateTL").html(dateFormat(cpeActionDateFormat));
+						d3.select("#date3").attr("class", "li complete");
+					} else {
+						d3.select("#cpeActionDateTL").html(pending.italics());
+						d3.select("#date3").attr("class", "li");
+					}					
+
+				if (!!peAssignedDate_txt){
+						d3.select("#peAssignedDateTL").html(dateFormat(peAssignedDateFormat));
+						d3.select("#date4").attr("class", "li complete");
+					} else {
+						d3.select("#peAssignedDateTL").html(pending.italics());
+						d3.select("#date4").attr("class", "li");
+					}
+					
+				if (!!firstObjectionDate_txt){
+						d3.select("#firstObjectionDateTL").html(dateFormat(firstObjectionDateFormat));
+						d3.select("#date5").attr("class", "li complete");
+					} else {
+						d3.select("#firstObjectionDateTL").html(pending.italics());
+						d3.select("#date5").attr("class", "li");
+					}
+					
+				if (!!latestResubmitDate_txt){
+						d3.select("#latestResubmitDateTL").html(dateFormat(latestResubmitDateFormat));
+						d3.select("#date7").attr("class", "li complete");
+					} else {
+						d3.select("#latestResubmitDateTL").html(pending.italics());
+						d3.select("#date7").attr("class", "li");
+					}
+					
+				if (!!latestObjectionDate_txt){
+						d3.select("#latestObjectionDateTL").html(dateFormat(latestObjectionDateFormat));
+						d3.select("#date6").attr("class", "li complete");
+					} else {
+						d3.select("#latestObjectionDateTL").html(pending.italics());
+						d3.select("#date6").attr("class", "li");
+					}
+					
+				if (!!planApprovedDate_txt){
+						d3.select("#planApprovedDateTL").html(dateFormat(planApprovedDateFormat));
+						d3.select("#date8").attr("class", "li complete");
+					} else {
+						d3.select("#planApprovedDateTL").html(pending.italics());
+						d3.select("#date8").attr("class", "li");
+					}
+					
+				if (!!permitIssuedDate_txt){
+						d3.select("#permitIssuedDateTL").html(dateFormat(permitIssuedDateFormat));
+						d3.select("#date9").attr("class", "li complete");
+					} else {
+						d3.select("#permitIssuedDateTL").html(pending.italics());
+						d3.select("#date9").attr("class", "li");
+					}
+					
+				if (!!latestPermitExpDate_txt){
+						d3.select("#latestPermitExpDateTL").html(dateFormat(latestPermitExpDateFormat));
+						d3.select("#date11").attr("class", "li complete");
+					} else {
+						d3.select("#latestPermitExpDateTL").html(pending.italics());
+						d3.select("#date11").attr("class", "li");
+					}	
+
+				if (noGoodCheck_txt=="Yes"){
+						d3.select("#summary14").html("  (NO GOOD CHECK)*");
+						d3.select("#summary15").html("*During the review and approval process of this filing, a payment was returned by the bank as 'No Good'. This may have caused delays in the Milestones timeline below.");
+					} else {
+						d3.select("#summary14").html("");
+						d3.select("#summary15").html("");
+					}			
+
+				if (!!jobSignOffDate_txt){
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#summary10").html("");
+					}				
+
+				if (!!jobSignOffDate_txt){
+						d3.select("#jobSignOffDateTL").html(dateFormat(jobSignOffDateFormat));
+						d3.select("#date12").attr("class", "li complete");
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#jobSignOffDateTL").html(pending.italics());
+						d3.select("#date12").attr("class", "li");
+						d3.select("#summary10").html("");
+					}					
+			}
+			
+			function pCert_Fail_failStatus(){
+				var pending = "pending";
+				var elem_sPlan_noObj_Chart = document.getElementById("sPlan_noObj_Chart");
+				elem_sPlan_noObj_Chart.remove();
+				var elem_pCert_noFail_Chart = document.getElementById("pCert_noFail_Chart");
+				elem_pCert_noFail_Chart.remove();
+				var elem_sPlan_Obj_objStatus_Chart = document.getElementById("sPlan_Obj_objStatus_Chart");
+				elem_sPlan_Obj_objStatus_Chart.remove();
+				var elem_sPlan_Obj_othStatus_Chart = document.getElementById("sPlan_Obj_othStatus_Chart");
+				elem_sPlan_Obj_othStatus_Chart.remove();
+				var elem_pCert_Fail_othStatus_Chart = document.getElementById("pCert_Fail_othStatus_Chart");
+				elem_pCert_Fail_othStatus_Chart.remove();
+				var elem_sPlan_Obj_objStatus_noResub_Chart = document.getElementById("sPlan_Obj_objStatus_noResub_Chart");
+				elem_sPlan_Obj_objStatus_noResub_Chart.remove();
+				var elem_pCert_Fail_failStatus_noResub_Chart = document.getElementById("pCert_Fail_failStatus_noResub_Chart");
+				elem_pCert_Fail_failStatus_noResub_Chart.remove();
+	
+				$('#pCert_Fail_failStatus_Chart').html();
+				
+				if (!!filingDate_txt){ 
+						d3.select("#filingDateTL").html(dateFormat(filingDateFormat));
+						d3.select("#date1").attr("class", "li complete");
+						
+				} else {
+					d3.select("#filingDateTL").html(pendingProCert.italics());
+					d3.select("#date1").attr("class", "li");
+				}
+				
+				if (!!proCertQASuperAssignedDate_txt){
+						d3.select("#proCertQASuperAssignedDateTL").html(dateFormat(proCertQASuperAssignedDateFormat));
+						d3.select("#date2_PC").attr("class", "li complete");
+					} else {
+						d3.select("#proCertQASuperAssignedDateTL").html(pendingProCert.italics());
+						d3.select("#date2_PC").attr("class", "li");
+					}	
+				
+				if (!!proCertQAClerkAssignedDate_txt){
+						d3.select("#proCertQAClerkAssignedDateTL").html(dateFormat(proCertQAClerkAssignedDateFormat));
+						d3.select("#date3_PC").attr("class", "li complete");
+					} else {
+						d3.select("#proCertQAClerkAssignedDateTL").html(pendingProCert.italics());
+						d3.select("#date3_PC").attr("class", "li");
+					}
+					
+				if (!!firstObjectionDate_txt){
+						d3.select("#firstObjectionDateTL").html(dateFormat(firstObjectionDateFormat));
+						d3.select("#date5").attr("class", "li complete");
+					} else {
+						d3.select("#firstObjectionDateTL").html(pending.italics());
+						d3.select("#date5").attr("class", "li");
+					}
+					
+				if (!!latestResubmitDate_txt){
+						d3.select("#latestResubmitDateTL").html(dateFormat(latestResubmitDateFormat));
+						d3.select("#date7").attr("class", "li complete");
+					} else {
+						d3.select("#latestResubmitDateTL").html(pending.italics());
+						d3.select("#date7").attr("class", "li");
+					}
+					
+				if (!!latestObjectionDate_txt){
+						d3.select("#latestObjectionDateTL").html(dateFormat(latestObjectionDateFormat));
+						d3.select("#date6").attr("class", "li complete");
+					} else {
+						d3.select("#latestObjectionDateTL").html(pending.italics());
+						d3.select("#date6").attr("class", "li");
+					}
+					
+				if (!!planApprovedDate_txt){
+						d3.select("#planApprovedDateTL").html(dateFormat(planApprovedDateFormat));
+						d3.select("#date8").attr("class", "li complete");
+					} else {
+						d3.select("#planApprovedDateTL").html(pending.italics());
+						d3.select("#date8").attr("class", "li");
+					}
+					
+				if (!!permitIssuedDate_txt){
+						d3.select("#permitIssuedDateTL").html(dateFormat(permitIssuedDateFormat));
+						d3.select("#date9").attr("class", "li complete");
+					} else {
+						d3.select("#permitIssuedDateTL").html(pending.italics());
+						d3.select("#date9").attr("class", "li");
+					}
+					
+				if (!!latestPermitExpDate_txt){
+						d3.select("#latestPermitExpDateTL").html(dateFormat(latestPermitExpDateFormat));
+						d3.select("#date11").attr("class", "li complete");
+					} else {
+						d3.select("#latestPermitExpDateTL").html(pending.italics());
+						d3.select("#date11").attr("class", "li");
+					}
+					
+				if (noGoodCheck_txt=="Yes"){
+						d3.select("#summary14").html("  (NO GOOD CHECK)*");
+						d3.select("#summary15").html("*During the review and approval process of this filing, a payment was returned by the bank as 'No Good'. This may have caused delays in the Milestones timeline below.");
+					} else {
+						d3.select("#summary14").html("");
+						d3.select("#summary15").html("");
+					}
+
+				if (!!jobSignOffDate_txt){
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#summary10").html("");
+					}
+					
+				if (!!jobSignOffDate_txt){
+						d3.select("#jobSignOffDateTL").html(dateFormat(jobSignOffDateFormat));
+						d3.select("#date12").attr("class", "li complete");
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#jobSignOffDateTL").html(pending.italics());
+						d3.select("#date12").attr("class", "li");
+						d3.select("#summary10").html("");
+					}
+			}
+
+			function pCert_Fail_failStatus_noResub(){
+				var pending = "pending";
+				var elem_sPlan_noObj_Chart = document.getElementById("sPlan_noObj_Chart");
+				elem_sPlan_noObj_Chart.remove();
+				var elem_pCert_noFail_Chart = document.getElementById("pCert_noFail_Chart");
+				elem_pCert_noFail_Chart.remove();
+				var elem_sPlan_Obj_objStatus_Chart = document.getElementById("sPlan_Obj_objStatus_Chart");
+				elem_sPlan_Obj_objStatus_Chart.remove();
+				var elem_sPlan_Obj_othStatus_Chart = document.getElementById("sPlan_Obj_othStatus_Chart");
+				elem_sPlan_Obj_othStatus_Chart.remove();
+				var elem_pCert_Fail_othStatus_Chart = document.getElementById("pCert_Fail_othStatus_Chart");
+				elem_pCert_Fail_othStatus_Chart.remove();
+				var elem_pCert_Fail_failStatus_Chart = document.getElementById("pCert_Fail_failStatus_Chart");
+				elem_pCert_Fail_failStatus_Chart.remove();
+				var elem_sPlan_Obj_objStatus_noResub_Chart = document.getElementById("sPlan_Obj_objStatus_noResub_Chart");
+				elem_sPlan_Obj_objStatus_noResub_Chart.remove();
+	
+				$('#pCert_Fail_failStatus_noResub_Chart').html();
+				
+				if (!!filingDate_txt){ 
+						d3.select("#filingDateTL").html(dateFormat(filingDateFormat));
+						d3.select("#date1").attr("class", "li complete");
+						
+				} else {
+					d3.select("#filingDateTL").html(pendingProCert.italics());
+					d3.select("#date1").attr("class", "li");
+				}
+				
+				if (!!proCertQASuperAssignedDate_txt){
+						d3.select("#proCertQASuperAssignedDateTL").html(dateFormat(proCertQASuperAssignedDateFormat));
+						d3.select("#date2_PC").attr("class", "li complete");
+					} else {
+						d3.select("#proCertQASuperAssignedDateTL").html(pendingProCert.italics());
+						d3.select("#date2_PC").attr("class", "li");
+					}	
+				
+				if (!!proCertQAClerkAssignedDate_txt){
+						d3.select("#proCertQAClerkAssignedDateTL").html(dateFormat(proCertQAClerkAssignedDateFormat));
+						d3.select("#date3_PC").attr("class", "li complete");
+					} else {
+						d3.select("#proCertQAClerkAssignedDateTL").html(pendingProCert.italics());
+						d3.select("#date3_PC").attr("class", "li");
+					}
+					
+				if (!!firstObjectionDate_txt){
+						d3.select("#firstObjectionDateTL").html(dateFormat(firstObjectionDateFormat));
+						d3.select("#date5").attr("class", "li complete");
+					} else {
+						d3.select("#firstObjectionDateTL").html(pending.italics());
+						d3.select("#date5").attr("class", "li");
+					}
+					
+				if (!!latestResubmitDate_txt){
+						d3.select("#latestResubmitDateTL").html(dateFormat(latestResubmitDateFormat));
+						d3.select("#date7").attr("class", "li complete");
+					} else {
+						d3.select("#latestResubmitDateTL").html(pending.italics());
+						d3.select("#date7").attr("class", "li");
+					}
+					
+				if (!!latestObjectionDate_txt){
+						d3.select("#latestObjectionDateTL").html(dateFormat(latestObjectionDateFormat));
+						d3.select("#date6").attr("class", "li complete");
+					} else {
+						d3.select("#latestObjectionDateTL").html(pending.italics());
+						d3.select("#date6").attr("class", "li");
+					}
+					
+				if (!!planApprovedDate_txt){
+						d3.select("#planApprovedDateTL").html(dateFormat(planApprovedDateFormat));
+						d3.select("#date8").attr("class", "li complete");
+					} else {
+						d3.select("#planApprovedDateTL").html(pending.italics());
+						d3.select("#date8").attr("class", "li");
+					}
+					
+				if (!!permitIssuedDate_txt){
+						d3.select("#permitIssuedDateTL").html(dateFormat(permitIssuedDateFormat));
+						d3.select("#date9").attr("class", "li complete");
+					} else {
+						d3.select("#permitIssuedDateTL").html(pending.italics());
+						d3.select("#date9").attr("class", "li");
+					}
+					
+				if (!!latestPermitExpDate_txt){
+						d3.select("#latestPermitExpDateTL").html(dateFormat(latestPermitExpDateFormat));
+						d3.select("#date11").attr("class", "li complete");
+					} else {
+						d3.select("#latestPermitExpDateTL").html(pending.italics());
+						d3.select("#date11").attr("class", "li");
+					}
+					
+				if (noGoodCheck_txt=="Yes"){
+						d3.select("#summary14").html("  (NO GOOD CHECK)*");
+						d3.select("#summary15").html("*During the review and approval process of this filing, a payment was returned by the bank as 'No Good'. This may have caused delays in the Milestones timeline below.");
+					} else {
+						d3.select("#summary14").html("");
+						d3.select("#summary15").html("");
+					}
+
+				if (!!jobSignOffDate_txt){
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#summary10").html("");
+					}
+					
+				if (!!jobSignOffDate_txt){
+						d3.select("#jobSignOffDateTL").html(dateFormat(jobSignOffDateFormat));
+						d3.select("#date12").attr("class", "li complete");
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#jobSignOffDateTL").html(pending.italics());
+						d3.select("#date12").attr("class", "li");
+						d3.select("#summary10").html("");
+					}
+			}
+			
+			function sPlan_Obj_othStatus(){
+				var pending = "pending";
+				var elem_sPlan_noObj_Chart = document.getElementById("sPlan_noObj_Chart");
+				elem_sPlan_noObj_Chart.remove();
+				var elem_pCert_noFail_Chart = document.getElementById("pCert_noFail_Chart");
+				elem_pCert_noFail_Chart.remove();
+				var elem_sPlan_Obj_objStatus_Chart = document.getElementById("sPlan_Obj_objStatus_Chart");
+				elem_sPlan_Obj_objStatus_Chart.remove();
+				var elem_pCert_Fail_failStatus_Chart = document.getElementById("pCert_Fail_failStatus_Chart");
+				elem_pCert_Fail_failStatus_Chart.remove();
+				var elem_pCert_Fail_othStatus_Chart = document.getElementById("pCert_Fail_othStatus_Chart");
+				elem_pCert_Fail_othStatus_Chart.remove();
+				var elem_sPlan_Obj_objStatus_noResub_Chart = document.getElementById("sPlan_Obj_objStatus_noResub_Chart");
+				elem_sPlan_Obj_objStatus_noResub_Chart.remove();
+				var elem_pCert_Fail_failStatus_noResub_Chart = document.getElementById("pCert_Fail_failStatus_noResub_Chart");
+				elem_pCert_Fail_failStatus_noResub_Chart.remove();
+	
+				$('#sPlan_Obj_othStatus_Chart').html();
+				
+				if (!!filingDate_txt){ 
+						d3.select("#filingDateTL").html(dateFormat(filingDateFormat));
+						d3.select("#date1").attr("class", "li complete");
+						
+				} else {
+					d3.select("#filingDateTL").html(pending.italics());
+					d3.select("#date1").attr("class", "li");
+				}
+				
+				if (!!cpeAssignedDate_txt){
+						d3.select("#cpeAssignedDateTL").html(dateFormat(cpeAssignedDateFormat));
+						d3.select("#date2").attr("class", "li complete");
+					} else {
+						d3.select("#cpeAssignedDateTL").html(pending.italics());
+						d3.select("#date2").attr("class", "li");
+					}	
+				
+				if (!!cpeActionDate_txt){
+						d3.select("#cpeActionDateTL").html(dateFormat(cpeActionDateFormat));
+						d3.select("#date3").attr("class", "li complete");
+					} else {
+						d3.select("#cpeActionDateTL").html(pending.italics());
+						d3.select("#date3").attr("class", "li");
+					}					
+
+				if (!!peAssignedDate_txt){
+						d3.select("#peAssignedDateTL").html(dateFormat(peAssignedDateFormat));
+						d3.select("#date4").attr("class", "li complete");
+					} else {
+						d3.select("#peAssignedDateTL").html(pending.italics());
+						d3.select("#date4").attr("class", "li");
+					}
+					
+				if (!!firstObjectionDate_txt){
+						d3.select("#firstObjectionDateTL").html(dateFormat(firstObjectionDateFormat));
+						d3.select("#date5").attr("class", "li complete");
+					} else {
+						d3.select("#firstObjectionDateTL").html(pending.italics());
+						d3.select("#date5").attr("class", "li");
+					}
+					
+				if (!!latestObjectionDate_txt){
+						d3.select("#latestObjectionDateTL").html(dateFormat(latestObjectionDateFormat));
+						d3.select("#date6").attr("class", "li complete");
+					} else {
+						d3.select("#latestObjectionDateTL").html(pending.italics());
+						d3.select("#date6").attr("class", "li");
+					}
+					
+				if (!!latestResubmitDate_txt){
+						d3.select("#latestResubmitDateTL").html(dateFormat(latestResubmitDateFormat));
+						d3.select("#date7").attr("class", "li complete");
+					} else {
+						d3.select("#latestResubmitDateTL").html(pending.italics());
+						d3.select("#date7").attr("class", "li");
+					}
+					
+					
+				if (!!planApprovedDate_txt){
+						d3.select("#planApprovedDateTL").html(dateFormat(planApprovedDateFormat));
+						d3.select("#date8").attr("class", "li complete");
+					} else {
+						d3.select("#planApprovedDateTL").html(pending.italics());
+						d3.select("#date8").attr("class", "li");
+					}
+					
+				if (!!permitIssuedDate_txt){
+						d3.select("#permitIssuedDateTL").html(dateFormat(permitIssuedDateFormat));
+						d3.select("#date9").attr("class", "li complete");
+					} else {
+						d3.select("#permitIssuedDateTL").html(pending.italics());
+						d3.select("#date9").attr("class", "li");
+					}
+					
+				if (!!latestPermitExpDate_txt){
+						d3.select("#latestPermitExpDateTL").html(dateFormat(latestPermitExpDateFormat));
+						d3.select("#date11").attr("class", "li complete");
+					} else {
+						d3.select("#latestPermitExpDateTL").html(pending.italics());
+						d3.select("#date11").attr("class", "li");
+					}
+					
+				if (noGoodCheck_txt=="Yes"){
+						d3.select("#summary14").html("  (NO GOOD CHECK)*");
+						d3.select("#summary15").html("*During the review and approval process of this filing, a payment was returned by the bank as 'No Good'. This may have caused delays in the Milestones timeline below.");
+					} else {
+						d3.select("#summary14").html("");
+						d3.select("#summary15").html("");
+					}
+					
+				if (!!jobSignOffDate_txt){
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#summary10").html("");
+					}
+					
+				if (!!jobSignOffDate_txt){
+						d3.select("#jobSignOffDateTL").html(dateFormat(jobSignOffDateFormat));
+						d3.select("#date12").attr("class", "li complete");
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#jobSignOffDateTL").html(pending.italics());
+						d3.select("#date12").attr("class", "li");
+						d3.select("#summary10").html("");
+					}
+			}
+			
+			function pCert_Fail_othStatus(){
+				var pending = "pending";
+				var elem_sPlan_noObj_Chart = document.getElementById("sPlan_noObj_Chart");
+				elem_sPlan_noObj_Chart.remove();
+				var elem_pCert_noFail_Chart = document.getElementById("pCert_noFail_Chart");
+				elem_pCert_noFail_Chart.remove();
+				var elem_sPlan_Obj_objStatus_Chart = document.getElementById("sPlan_Obj_objStatus_Chart");
+				elem_sPlan_Obj_objStatus_Chart.remove();
+				var elem_pCert_Fail_failStatus_Chart = document.getElementById("pCert_Fail_failStatus_Chart");
+				elem_pCert_Fail_failStatus_Chart.remove();
+				var elem_sPlan_Obj_othStatus_Chart = document.getElementById("sPlan_Obj_othStatus_Chart");
+				elem_sPlan_Obj_othStatus_Chart.remove();
+				var elem_sPlan_Obj_objStatus_noResub_Chart = document.getElementById("sPlan_Obj_objStatus_noResub_Chart");
+				elem_sPlan_Obj_objStatus_noResub_Chart.remove();
+				var elem_pCert_Fail_failStatus_noResub_Chart = document.getElementById("pCert_Fail_failStatus_noResub_Chart");
+				elem_pCert_Fail_failStatus_noResub_Chart.remove();
+
+				$('#pCert_Fail_othStatus_Chart').html();
+				
+				if (!!filingDate_txt){ 
+						d3.select("#filingDateTL").html(dateFormat(filingDateFormat));
+						d3.select("#date1").attr("class", "li complete");
+						
+				} else {
+					d3.select("#filingDateTL").html(pendingProCert.italics());
+					d3.select("#date1").attr("class", "li");
+				}
+				
+				if (!!proCertQASuperAssignedDate_txt){
+						d3.select("#proCertQASuperAssignedDateTL").html(dateFormat(proCertQASuperAssignedDateFormat));
+						d3.select("#date2_PC").attr("class", "li complete");
+					} else {
+						d3.select("#proCertQASuperAssignedDateTL").html(pendingProCert.italics());
+						d3.select("#date2_PC").attr("class", "li");
+					}	
+				
+				if (!!proCertQAClerkAssignedDate_txt){
+						d3.select("#proCertQAClerkAssignedDateTL").html(dateFormat(proCertQAClerkAssignedDateFormat));
+						d3.select("#date3_PC").attr("class", "li complete");
+					} else {
+						d3.select("#proCertQAClerkAssignedDateTL").html(pendingProCert.italics());
+						d3.select("#date3_PC").attr("class", "li");
+					}
+					
+				if (!!firstObjectionDate_txt){
+						d3.select("#firstObjectionDateTL").html(dateFormat(firstObjectionDateFormat));
+						d3.select("#date5").attr("class", "li complete");
+					} else {
+						d3.select("#firstObjectionDateTL").html(pending.italics());
+						d3.select("#date5").attr("class", "li");
+					}
+					
+				if (!!latestObjectionDate_txt){
+						d3.select("#latestObjectionDateTL").html(dateFormat(latestObjectionDateFormat));
+						d3.select("#date6").attr("class", "li complete");
+					} else {
+						d3.select("#latestObjectionDateTL").html(pending.italics());
+						d3.select("#date6").attr("class", "li");
+					}
+					
+				if (!!latestResubmitDate_txt){
+						d3.select("#latestResubmitDateTL").html(dateFormat(latestResubmitDateFormat));
+						d3.select("#date7").attr("class", "li complete");
+					} else {
+						d3.select("#latestResubmitDateTL").html(pending.italics());
+						d3.select("#date7").attr("class", "li");
+					}
+										
+				if (!!planApprovedDate_txt){
+						d3.select("#planApprovedDateTL").html(dateFormat(planApprovedDateFormat));
+						d3.select("#date8").attr("class", "li complete");
+					} else {
+						d3.select("#planApprovedDateTL").html(pending.italics());
+						d3.select("#date8").attr("class", "li");
+					}
+					
+				if (!!permitIssuedDate_txt){
+						d3.select("#permitIssuedDateTL").html(dateFormat(permitIssuedDateFormat));
+						d3.select("#date9").attr("class", "li complete");
+					} else {
+						d3.select("#permitIssuedDateTL").html(pending.italics());
+						d3.select("#date9").attr("class", "li");
+					}
+					
+				if (!!latestPermitExpDate_txt){
+						d3.select("#latestPermitExpDateTL").html(dateFormat(latestPermitExpDateFormat));
+						d3.select("#date11").attr("class", "li complete");
+					} else {
+						d3.select("#latestPermitExpDateTL").html(pending.italics());
+						d3.select("#date11").attr("class", "li");
+					}
+					
+				if (noGoodCheck_txt=="Yes"){
+						d3.select("#summary14").html("  (NO GOOD CHECK)*");
+						d3.select("#summary15").html("*During the review and approval process of this filing, a payment was returned by the bank as 'No Good'. This may have caused delays in the Milestones timeline below.");
+					} else {
+						d3.select("#summary14").html("");
+						d3.select("#summary15").html("");
+					}
+					
+				if (!!jobSignOffDate_txt){
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#summary10").html("");
+					}
+					
+				if (!!jobSignOffDate_txt){
+						d3.select("#jobSignOffDateTL").html(dateFormat(jobSignOffDateFormat));
+						d3.select("#date12").attr("class", "li complete");
+						d3.select("#summary10").html("  (" + dateFormat(jobSignOffDateFormat) +")");
+					} else {
+						d3.select("#jobSignOffDateTL").html(pending.italics());
+						d3.select("#date12").attr("class", "li");
+						d3.select("#summary10").html("");
+					}
+			}
+
+		}
+	
+	);
+	
+</script>
+</body>
+</html>
