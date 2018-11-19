@@ -16,7 +16,7 @@
 	<div class="heading">
 		DOB NOW JOB FILING: <span id="summary9"></span>
 		<ul class="links">
-			<a class="overview" target="_parent" href="https://nycdob.github.io/D3_DOBNOW_Milestone/layouts/two-and-one/index_overview_all_filings">Job Filings Overview Map</a>
+			<a class="overview" target="_parent" href="https://nycdob.github.io/DOB_NOW_Milestone_App/index_overview">Job Filings Overview Map</a>
 			<a href="https://github.com/NYCDOB/D3_DOBNOW_Milestone/blob/gh-pages/README.md" target="_blank" type="button" class="btn btn-default btn-sm">About</a>
 			<a href="https://github.com/NYCDOB/D3_DOBNOW_Milestone/tree/gh-pages" target="_blank" type="button" class="btn btn-default btn-sm">Github</a>
 		</ul>
@@ -841,7 +841,7 @@
 		document.getElementById("propmap").setAttribute("src", mapProperty);
 	}
 
-	d3.csv("https://raw.githubusercontent.com/NYCDOB/D3_DOBNOW_Milestone/gh-pages/data/milestone_test3.csv", function(d){
+	d3.csv("https://raw.githubusercontent.com/NYCDOB/DOB_NOW_Milestone_App/gh-pages/data/milestone.csv", function(d){
 		return {
 			id : d.key_id,
 			jobnumber : d["Job Number"],
