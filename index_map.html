@@ -199,7 +199,7 @@ function init(){
 		.on('click', function(d){
 			tooltip.style("visibility", "visible");
 			tooltip.html(
-				'JOB NUMBER: ' + '<a href= "https://nycdob.github.io/D3_DOBNOW_Milestone/layouts/two-and-one/index_property_all_filings#' + d.key_id +'" target="_parent">' + d.jobNum + "</a>" + '</br>' +
+				'JOB NUMBER: ' + '<a href= "https://nycdob.github.io/DOB_NOW_Milestone_App/index_property#' + d.key_id +'" target="_parent">' + d.jobNum + "</a>" + '</br>' +
 				'BIN: ' + d.bin + '</br>' +								
 				'ADDRESS: '+ d.HouseNum + ' ' + d.Street + ', ' + d.Borough + '</br>' +
 				'COMMUNITY DISTRICT: ' + d.CD + '</br>' +
@@ -228,7 +228,7 @@ function init(){
 		pointsUpd.attr('r', 3 / proj.scale);
 });
 	
-	d3.csv("https://raw.githubusercontent.com/NYCDOB/D3_DOBNOW_Milestone/gh-pages/data/milestone.csv",function(data){
+	d3.csv("https://raw.githubusercontent.com/NYCDOB/DOB_NOW_Milestone_App/gh-pages/data/milestone.csv",function(data){
 				points = data.map(function(d){
 				d.latLng = [+d.Latitude,+d.Longitude];
 				d.bin = [d.Bin];				
