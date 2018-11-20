@@ -39,14 +39,14 @@ $(document).ready(function() {
 	
 			$('#riskTable').DataTable({
 				"ajax": {
-					"url": "https://raw.githubusercontent.com/NYCDOB/D3_DOBNOW_Milestone/gh-pages/data/milestone.json",
+					"url": "https://raw.githubusercontent.com/NYCDOB/DOB_NOW_Milestone_App/gh-pages/data/milestone.json",
 					"dataSrc": ""
 				},
 				columnDefs: [{
 					targets: 0,
 					render: function(data,type,row,meta){
 						//return '<a href="http://a810-bisweb.nyc.gov/bisweb/JobsQueryByNumberServlet?passjobnumber=' + data + '" target="_blank">' + data + '</a>';
-						return '<a href= "https://nycdob.github.io/D3_DOBNOW_Milestone/layouts/two-and-one/index_property_all_filings#' + data +'" target="_parent">' + data + '</a>';
+						return '<a href= "https://nycdob.github.io/DOB_NOW_Milestone_App/index_property#' + data +'" target="_parent">' + data + '</a>';
 					}
 				}],
 				order: [[7, "asc"]],
