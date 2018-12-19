@@ -40,7 +40,7 @@ div.tooltip {
 	background-color: #fff;
 	border: 2px solid #707070;
 	border-radius: 7px;
-	width: 120px;
+	width: 200px;
 }
 .antenna {
 	fill: #00A9E6;
@@ -52,6 +52,10 @@ div.tooltip {
 }
 .fence {
 	fill: #E64C00;
+	fill-opacity: .7;
+}
+.placeAssem {
+	fill: #1d3c6d;
 	fill-opacity: .7;
 }
 .plumbing {
@@ -78,6 +82,10 @@ div.tooltip {
 	fill: #732600;
 	fill-opacity: .7;
 }
+.tempPlaceAssem {
+	fill: #c100a1;
+	fill-opacity: .7;
+}
 </style>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css'
     	rel='stylesheet' type='text/css'/>
@@ -98,6 +106,10 @@ div.tooltip {
 				  
 				  <span style="display:inline-block; background-color:#E64C00; padding:0px; margin:0px; height:13px; width:13px; overflow:hidden"><input type="checkbox" style="opacity:0.50;padding:0px;margin:0px" name="work_type" class="regular-checkbox" value="fenceWT" id="fenceWT" /></span>
 					<label for="fenceWT"></label><span class="en">Fence</span>
+				  <br/>
+			
+				  <span style="display:inline-block; background-color:#1d3c6d; padding:0px; margin:0px; height:13px; width:13px; overflow:hidden"><input type="checkbox" style="opacity:0.50;padding:0px;margin:0px" name="work_type" class="regular-checkbox" value="placeAssemWT" id="placeAssemWT" /></span>
+					<label for="placeAssemWT"></label><span class="en">Place of Assembly</span>
 				  <br/>
 				  
 				  <span style="display:inline-block; background-color:#70A800; padding:0px; margin:0px; height:13px; width:13px; overflow:hidden"><input type="checkbox" style="opacity:0.50;padding:0px;margin:0px" name="work_type" class="regular-checkbox" value="plumbingWT" id="plumbingWT" /></span>
@@ -122,6 +134,10 @@ div.tooltip {
 				  
 				  <span style="display:inline-block; background-color:#732600; padding:0px; margin:0px; height:13px; width:13px; overflow:hidden"><input type="checkbox" style="opacity:0.50;padding:0px;margin:0px" name="work_type" class="regular-checkbox" value="standpipeWT" id="standpipeWT" /></span>
 					<label for="standpipeWT"></label><span class="en">Standpipe</span>
+				  <br/>
+			
+				  <span style="display:inline-block; background-color:#c100a1; padding:0px; margin:0px; height:13px; width:13px; overflow:hidden"><input type="checkbox" style="opacity:0.50;padding:0px;margin:0px" name="work_type" class="regular-checkbox" value="tempPlaceAssemWT" id="tempPlaceAssemWT" /></span>
+					<label for="tempPlaceAssemWT"></label><span class="en">Temporary Place of Assembly</span>
 				  <br/>
 				  
 
@@ -166,6 +182,8 @@ function init(){
 				return "curbcut";
 			}  else if (d["Work Type Name"] == "Fence"){ 
 				return "fence";
+			}	else if (d["Work Type Name"] == "Place of Assembly"){ 
+				return "placeAssem";
 			}  else if (d["Work Type Name"] == "Plumbing"){ 
 				return "plumbing";
 			}  else if (d["Work Type Name"] == "Scaffold"){ 
@@ -178,6 +196,8 @@ function init(){
 				return "sprinkler";
 			}  else if (d["Work Type Name"] == "Standpipe"){ 
 				return "standpipe";
+			}	else if (d["Work Type Name"] == "Temporary Place of Assembly"){ 
+				return "tempPlaceAssem";
 			}
 		})
 		
@@ -229,12 +249,14 @@ function init(){
 		pointsOverlay.addTo(map);
 		d3.selectAll(".curbcut").style("display", "none");
 		d3.selectAll(".fence").style("display", "none");
+		d3.selectAll(".placeAssem").style("display", "none");
 		d3.selectAll(".plumbing").style("display", "none");
 		d3.selectAll(".scaffold").style("display", "none");
 		d3.selectAll(".shed").style("display", "none");
 		d3.selectAll(".sign").style("display", "none");
 		d3.selectAll(".sprinkler").style("display", "none");
 		d3.selectAll(".standpipe").style("display", "none");
+		d3.selectAll(".tempPlaceAssem").style("display", "none");
 	});
 	map.on('resize', function(){
 		map.invalidateSize();
@@ -243,12 +265,14 @@ function init(){
 var antennaCheckbox = document.querySelector('input[id="antennaWT"]');
 	curbcutCheckbox = document.querySelector('input[id="curbcutWT"]');
 	fenceCheckbox = document.querySelector('input[id="fenceWT"]');
+	placeAssemCheckbox = document.querySelector('input[id="placeAssemWT"]');
 	plumbingCheckbox = document.querySelector('input[id="plumbingWT"]');
 	scaffoldCheckbox = document.querySelector('input[id="scaffoldWT"]');
 	shedCheckbox = document.querySelector('input[id="shedWT"]');
 	signCheckbox = document.querySelector('input[id="signWT"]');
 	sprinklerCheckbox = document.querySelector('input[id="sprinklerWT"]');
 	standpipeCheckbox = document.querySelector('input[id="standpipeWT"]');
+	tempPlaceAssemCheckbox = document.querySelector('input[id="tempPlaceAssemWT"]');
 antennaCheckbox.onchange = function(){
 		if(this.checked){
 			d3.selectAll(".antenna").filter(function(d) {
@@ -284,6 +308,19 @@ fenceCheckbox.onchange = function(){
 		} else {
 			d3.selectAll(".fence").filter(function(d) {
 				return d["Work Type Name"] == "Fence";
+			})
+			.style("display", "none");						
+		}
+};
+placeAssemCheckbox.onchange = function(){
+		if(this.checked){
+			d3.selectAll(".placeAssem").filter(function(d) {
+				return d["Work Type Name"] == "Place of Assembly";
+			})
+			.style("display", "block");	
+		} else {
+			d3.selectAll(".placeAssem").filter(function(d) {
+				return d["Work Type Name"] == "Place of Assembly";
 			})
 			.style("display", "none");						
 		}
@@ -362,6 +399,19 @@ standpipeCheckbox.onchange = function(){
 		} else {
 			d3.selectAll(".standpipe").filter(function(d) {
 				return d["Work Type Name"] == "Standpipe";
+			})
+			.style("display", "none");						
+		}
+};
+tempPlaceAssemCheckbox.onchange = function(){
+		if(this.checked){
+			d3.selectAll(".tempPlaceAssem").filter(function(d) {
+				return d["Work Type Name"] == "Temporary Place of Assembly";
+			})
+			.style("display", "block");	
+		} else {
+			d3.selectAll(".tempPlaceAssem").filter(function(d) {
+				return d["Work Type Name"] == "Temporary Place of Assembly";
 			})
 			.style("display", "none");						
 		}
