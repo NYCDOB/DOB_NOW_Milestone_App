@@ -233,7 +233,7 @@ function init(){
 		pointsUpd.attr('r', 3 / proj.scale);
 });
 	
-	d3.csv("https://raw.githubusercontent.com/NYCDOB/DOB_NOW_Milestone_App/gh-pages/data/milestone.csv",function(data){
+	d3.csv("https://raw.githubusercontent.com/NYCDOB/MA/gh-pages/milestone.csv",function(data){
 				points = data.map(function(d){
 				d.latLng = [+d.Latitude,+d.Longitude];
 				d.bin = [d.Bin];				
