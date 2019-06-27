@@ -1,6 +1,11 @@
 ## DOB NOW: Build Milestones
 
-The New York City Department of Buildings (DOB) DOB NOW Build Milestones application displays basic details for selected DOB NOW Build filings on an interactive map of New York City. Each filing is represented as a point on the map, and clicking the point or the item on the list below brings you to a profile page that shows major milestone dates for that filing. The application is updated daily with the latest filings for Antenna, Curb Cut, Fence, Plumbing, Scaffold, Sidewalk Shed, Sign, Sprinkler, and Standpipe filings in DOB NOW.
+DOB NOW: Build is a self-service online tool from the [NYC Department of Buildings](https://www1.nyc.gov/site/buildings/index.page) that allows Building Owners, Design Professionals, Licensees, and Filing Representatives to conduct business with the Department online. DOB NOW provides customers with the ability to submit filings for construction work, check the status of a filing or inspection, pull permits, make renewals, and have virtual interactions with Agency staff. 
+
+The DOB NOW Milestone application is a public-facing web interface that enables map-based navigation of the filings in DOB NOW. This application provides 2 different experiences for the user to choose from:
+* Individual Jobs: A user can enter their job number and receive real-time information on the filing’s status, scope, and location. Key milestones of the filing process are displayed including the initial filing, plan review, objections, resubmissions, approval, permitting, and sign off.
+* Multiple Jobs: A second module allows users to search for and extract multiple records based on filters for applicant name, work type, geography, and timeline.  The filtered results are then displayed as a list with expandable details as well as a map of the filing location and associated summary statistics of the selected records. Users can explore the results of their query by drilling down on individual filings. Selecting an individual record brings the user to the same milestone tracking page as referenced in the first module. Based on the user's search criteria, they can also get a comprehensive view of aggregated, city-wide filing metrics presented as monthly time-series graphs, community board choropleth maps, and additional visualizations.  This provides the user with information on overall trends in DOB NOW filing volume by work type, permitting activity, and other location-based data insights. 
+
 
 ![Milestone Map Page](https://github.com/cnicklin/DOB_NOW_Milestone_App/blob/gh-pages/MapPage.PNG)
 
