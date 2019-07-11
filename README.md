@@ -1,6 +1,11 @@
 ## DOB NOW: Build Milestones
 
-The New York City Department of Buildings (DOB) DOB NOW Build Milestones application displays basic details for selected DOB NOW Build filings on an interactive map of New York City. Each filing is represented as a point on the map, and clicking the point or the item on the list below brings you to a profile page that shows major milestone dates for that filing. The application is updated daily with the latest filings for Antenna, Curb Cut, Fence, Plumbing, Scaffold, Sidewalk Shed, Sign, Sprinkler, and Standpipe filings in DOB NOW.
+DOB NOW: Build is a self-service online tool from the [NYC Department of Buildings](https://www1.nyc.gov/site/buildings/index.page) that allows Building Owners, Design Professionals, Licensees, and Filing Representatives to conduct business with the Department online. DOB NOW provides customers with the ability to submit filings for construction work, check the status of a filing or inspection, pull permits, make renewals, and have virtual interactions with Agency staff. 
+
+The DOB NOW Milestone application is a public-facing web interface that enables map-based navigation of the filings in DOB NOW. This application provides 2 different experiences for the user to choose from:
+* Individual Filings: A user can search by job number, applicant name, or building address, and receive real-time information on a filing’s status, scope, and location. Key milestones of the filing process are displayed including the initial filing, plan review, objections, resubmissions, approval, permitting, and sign off.
+* Multiple Filings: If the user chooses an applicant with multiple filings, or chooses the Multiple Filings option from the start, then they will be provided with the second experience: A map display of the entire list of search results. The filtered results are  displayed as a list with expandable details as well as a map of the filing location. If the user clicks on the Statistics tab, they'll see a series of charts that breaks down the trends within the user's search criteria, such as work types, filings statuses, and other location-based data insights. Users can also explore the results of their query by drilling down on individual filings. Selecting an individual record brings the user to the same individual filing page as referenced in the first module. 
+
 
 ![Milestone Map Page](https://github.com/cnicklin/DOB_NOW_Milestone_App/blob/gh-pages/MapPage.PNG)
 
