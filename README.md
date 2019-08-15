@@ -44,26 +44,6 @@ Definitions for elements on the Profile Page are listed below, but can also be v
 | Job Signed Off | The date that the Department of Buildings acknowledged that the work is complete. |
 | LOC Issued | When a job does not change the use, egress, or occupancy of a building, a Letter of Completion is issued after the job is signed off. |
 
-### Milestone Timelines
-
-To facilitate the design and layout of the Milestone Timeline in the Job Filing page, the following timelines were created. This reduces confusion that may be caused when a simpler timeline skips over a date, such as when a standard plan exam job never receives an objection.
-
-Standard Plan Exam Timelines
-<ol>
-    <li>Standard Plan Exam with no objections: Initial Filing > CPE Assigned > CPE Action > PE Assigned > Plan Approved > Initial Permit Issued > Latest Permit Expiration > Job Signed Off</li>
-    <li>Standard Plan Exam where the filing received its first objection (Filing Status = "Objections" and Resubmissions = 0): Initial Filing > CPE Assigned > CPE Action > PE Assigned > First Objection > Latest Objection > Latest Resubmission > Plan Approved > Initial Permit Issued > Latest Permit Expiration > Job Signed Off</li>
-    <li>Standard Plan Exam where the filing received another objection (Filing Status = "Objections" and Resubmissions > 0): Initial Filing > CPE Assigned > CPE Action > PE Assigned > First Objection > Latest Resubmission > Latest Objection > Plan Approved > Initial Permit Issued > Latest Permit Expiration > Job Signed Off</li>
-    <li>Standard Plan Exam with objections that has been resubmitted (Filing Status does not equal "Objections" and Resubmissions > 0): Initial Filing > CPE Assigned > CPE Action > PE Assigned > First Objection > Latest Objection > Latest Resubmission > Plan Approved > Initial Permit Issued > Latest Permit Expiration > Job Signed Off</li>
-</ol>
-
-Professional Certification Timelines
-<ol>
-    <li>Pro-Cert with no QA failures: Initial Filing > QA Supervisor Assigned > QA Admin Assigned > Plan Approved > Initial Permit Issued > Latest Permit Expiration > Job Signed Off</li>
-    <li>Pro-Cert with the first QA failure (Filing Status = "QA Failed" and Resubmissions = 0): Initial Filing > QA Supervisor Assigned > QA Admin Assigned > Initial QA Failed > Latest QA Failed > Latest Resubmission > Plan Approved > Initial Permit Issued > Latest Permit Expiration > Job Signed Off</li>
-    <li>Pro-Cert where the filing failed QA another time (Filing Status = "QA Failed" and Resubmissions > 0): Initial Filing > QA Supervisor Assigned > QA Admin Assigned > Initial QA Failed > Latest Resubmission > Latest QA Failed > Plan Approved > Initial Permit Issued > Latest Permit Expiration > Job Signed Off</li>
-    <li>Pro-Cert with QA failures that has been resubmitted: Initial Filing > QA Supervisor Assigned > QA Admin Assigned > Initial QA Failed > Latest QA Failed > Latest Resubmission > Plan Approved > Initial Permit Issued > Latest Permit Expiration > Job Signed Off</li>
-</ol>
-
 
 ## Built With
 
