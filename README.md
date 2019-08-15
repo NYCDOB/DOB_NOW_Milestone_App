@@ -57,7 +57,7 @@ Definitions for elements on the Profile Page are listed below, but can also be v
 
 ## Built by
 
-* [DOB Analytics and Data Science Team](https://www1.nyc.gov/site/buildings/about/metrics-reports.page) - If you have questions or feedback, comment here on github or email us at [Analytics@buildings.nyc.gov](mailto:analytics@buildings.nyc.gov). 
+* [DOB Analytics and Data Science Team](https://www1.nyc.gov/site/buildings/about/metrics-reports.page) - If you have questions or feedback, email us at [Analytics@buildings.nyc.gov](mailto:analytics@buildings.nyc.gov). 
 
 ## Acknowledgments
 
