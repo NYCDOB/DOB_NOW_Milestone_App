@@ -38,19 +38,11 @@ Definitions for elements on the Profile Page are listed below, but can also be v
 | Field Name | Definition |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Initial Filing | The date that the applicant submitted the filing to the Department of Buildings. |
-#| CPE Assigned | The date that the filing was assigned to a Chief Plan Examiner for review or for delegation to a Plan Examiner. |
-| CPE Action | The date that the Chief Plan Examiner took action on the filing. |
-| PE Assigned | The date that the filing was assigned to a Plan Examiner. |
-| First Objection | The date that the filing was first returned to the applicant with objections. A filing may go through several cycles of being submitted, reviewed by a Plan Examiner, and returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date. |
-| Latest Objection | The most recent date that the filing was returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date. |
-| Latest Resubmission | The most recent date that the filing was resubmitted to the Department of Buildings for review. A filing may never be sent back to the applicant and therefore may skip this milestone date. |
-| QA Supervisor Assigned | The date that the filing was assigned to a QA Supervisor for review or for delegation to a QA Admin. |
-| QA Admin Assigned | The date that the filing was assigned to a QA Admin. |
-| Initial QA Failed | The first date that the filing was returned to the applicant because it was incomplete or needed correction. A filing can fail QA multiple times, or it may be approved on the first review and skip this milestone date. |
 | Plan Approved | The date that the filing was approved. The applicant can now pull permits. |
 | Initial Permit Issued | The first date that a permit was issued. Multiple permits can be issued for a job filing. |
 | Latest Permit Expiration | The expiration date for the most recent permit. Multiple permits can be issued for a job filing. |
 | Job Signed Off | The date that the Department of Buildings acknowledged that the work is complete. |
+| LOC Issued | When a job does not change the use, egress, or occupancy of a building, a Letter of Completion is issued after the job is signed off. |
 
 ### Milestone Timelines
 
