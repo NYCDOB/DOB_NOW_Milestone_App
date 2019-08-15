@@ -30,13 +30,15 @@ Definitions for elements on the Profile Page are listed below, but can also be v
 | Filing Status | The current status of the filing. A definition for each of the values for Filing Status can be found on our [Status Glossary](https://github.com/cnicklin/DOB_NOW_Milestone_App/blob/gh-pages/Statuses.md). |
 | Number of Resubmissions | During review, the Department of Buildings may return a filing to the applicant multiple times because the information is incomplete, because it needs correction, or another reason. This indicates the total number of times the filing was resubmitted, and does not include the initial submission. |
 | Job Description | The general description of the work being applied for. This field is free text, and is filled out by the applicant. |
+| Total DOB Processing Time | The total number of business days that the filing has been under review by DOB from the inital submission to approval. |
+| Total Time With Applicant | The total number of business days that the filing has been with the applicant for revision after inital submission and until approval. |
 
 ### Milestone Dates
 
 | Field Name | Definition |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Initial Filing | The date that the applicant submitted the filing to the Department of Buildings. |
-| CPE Assigned | The date that the filing was assigned to a Chief Plan Examiner for review or for delegation to a Plan Examiner. |
+#| CPE Assigned | The date that the filing was assigned to a Chief Plan Examiner for review or for delegation to a Plan Examiner. |
 | CPE Action | The date that the Chief Plan Examiner took action on the filing. |
 | PE Assigned | The date that the filing was assigned to a Plan Examiner. |
 | First Objection | The date that the filing was first returned to the applicant with objections. A filing may go through several cycles of being submitted, reviewed by a Plan Examiner, and returned to the applicant with objections. A filing may never receive objections and therefore may skip this milestone date. |
