@@ -11,8 +11,6 @@ The DOB NOW Milestone application is a public-facing web interface that enables 
 
 ## Data Source
 
-Data flows from the BI tool to GitHub public hold. This is a daily automated process. It creates results in 2 formats: JSON (for search) and CSV (for map imaging).
-
 <img align="center" width="" height="" src="https://github.com/cnicklin/DOB_NOW_Milestone_App/blob/gh-pages/Data_Flow.png" alt="Milestone App Flow Diagram">
 
 ## Data Definitions
