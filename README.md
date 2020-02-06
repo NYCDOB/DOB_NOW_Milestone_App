@@ -50,6 +50,7 @@ Definitions for elements on the Profile Page are listed below, but can also be v
 * [Keen Dashboards](https://keen.github.io/dashboards/)
 * [Bootstrap](https://getbootstrap.com/)
 * Java 1.6 (Core, open proj4j by osgeo)
+* Ellipsis icon by [Loading.io](https://loading.io/)
 
 ## Built by
 
